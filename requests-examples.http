@@ -1,0 +1,66 @@
+# примеры API-запросов
+
+@baseUrl = http://localhost:8000/api
+
+# получение объявлений
+GET {{baseUrl}}/adv/
+Content-Type: application/json
+
+###
+
+# создание объявления
+POST {{baseUrl}}/adv/
+Content-Type: application/json
+Authorization: Token 8cd922a36fa1a2332b881ac10d934b7493785339
+# Authorization: Token f64bcb3b6b2cc14ca73d2ce8f20c8574b8352b4e
+
+{
+  "title": "Стол IKEA",
+  "description": "Срочно"
+}
+
+###
+
+# попытка поменять объявление
+PATCH {{baseUrl}}/adv/21/
+Content-Type: application/json
+# Authorization: Token 8cd922a36fa1a2332b881ac10d934b7493785339
+Authorization: Token f64bcb3b6b2cc14ca73d2ce8f20c8574b8352b4e
+
+{
+  "title": "Стул IKEA",
+  "status": "CLOSED"
+}
+
+###
+
+# удалить объявление
+DELETE {{baseUrl}}/adv/23/
+Content-Type: application/json
+Authorization: Token 8cd922a36fa1a2332b881ac10d934b7493785339
+# Authorization: Token f64bcb3b6b2cc14ca73d2ce8f20c8574b8352b4e
+
+
+###
+
+# фильтрация по статусу
+GET {{baseUrl}}/adv/?status=OPEN&creator=1
+Content-Type: application/json
+
+###
+
+# фильтрация по автору
+GET {{baseUrl}}/adv/?creator=1
+Content-Type: application/json
+
+###
+
+# фильтрация по дате
+GET {{baseUrl}}/adv/?created_at_after=2024-02-28
+Content-Type: application/json
+
+###
+
+# фильтрация по дате
+GET {{baseUrl}}/adv/?created_at_before=2024-02-27
+Content-Type: application/json
